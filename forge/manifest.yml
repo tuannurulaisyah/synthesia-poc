@@ -1,0 +1,33 @@
+modules:
+  jiraServiceManagement:portalUserMenuAction:
+    - key: forge-avatar-user-menu-action
+      resource: main
+      resolver:
+        function: resolver
+      viewportSize: large
+      title: Talk to the avatar
+      unlicensedAccess:
+        - customer
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/forge-synthesia/build
+permissions:
+  scopes: []
+  content:
+    styles:
+      - "unsafe-inline"
+  external:
+    fetch:
+      client:
+        # replace both with your LiveKit Cloud project URL
+        - "https://your-project.livekit.cloud"
+        - "wss://your-project.livekit.cloud"
+app:
+  runtime:
+    name: nodejs24.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/744af460-a70b-4d87-9bb0-ad575081a307
